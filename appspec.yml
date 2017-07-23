@@ -1,0 +1,28 @@
+version: 0.0
+os: linux
+files:
+  - source: ./
+    destination: /home/ec2-user/ner
+
+permissions:
+  - object: /home/ec2-user/ner
+    pattern: "**"
+    owner: ec2-user
+    group: ec2-user
+
+  - object: /home/ec2-user/ner
+    pattern: "*.sh"
+    mode: 774
+
+#
+#hooks:
+#  ApplicationStop:
+#    - location: systemctl stop ner
+#      timeout: 20
+#      runas: ec2-user
+#
+#  ApplicationStart:
+#    - location: systemctl start ner
+#      timeout: 20
+#      runas: ec2-user
+#
