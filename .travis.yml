@@ -30,6 +30,7 @@ deploy:
     application: nervous-efficient-rebel-app
     deployment_group: nervous-efficient-rebel-depgrp
     region: eu-west-1
+    wait-until-deployed: true
     on: *2
 
 branches:
