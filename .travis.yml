@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - "node"
+  - "7"
+  - "6"
+  - "5"
+  - "4"
+install:
+  - true
+script:
+  - true
+deploy:
+  provider: codedeploy
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: "nervous-efficient-rebel"
+  key: latest/MyApp.zip
+  application: MyApp
+  deployment_group: MyDeploymentGroup
+  on:
+    branch: develop
+branches:
+  except:
+    - /v\d+\.\d+\.\d+/
+notifications:
+  email: false
+
