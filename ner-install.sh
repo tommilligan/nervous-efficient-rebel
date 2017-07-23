@@ -52,7 +52,3 @@ EOF
 # Make executable 
 chmod a+x $serverScript
 
-# Start service
-#setsid ./$serverScript > bombproof.log 2>&1 < /dev/null &
-
-
