@@ -42,7 +42,7 @@ printf "Using java executable '$executable'\n"
 
 
 # Write server script
-serverScript="$versionName/ner-server.sh"
+serverScript="ner-server.sh"
 printf "Writing server script to $serverScript\n"
 cat << EOF > $serverScript
 #!/bin/sh
