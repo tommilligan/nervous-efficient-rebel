@@ -9,7 +9,7 @@ install:
   - true
 script:
   - true
-after_script:
+after_success:
   - zip -r deploy * && mkdir deploy && mv deploy.zip deploy/
 deploy:
   - provider: s3
