@@ -10,7 +10,7 @@ install:
 script:
   - true
 before_deploy:
-  - zip -r deploy * && mkdir deploy && mv deploy.zip deploy/
+  - zip -r latest * && mkdir deploy && mv latest.zip deploy/
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
@@ -24,7 +24,7 @@ deploy:
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
-    key: deploy.zip
+    key: latest.zip
     bundle_type: zip
     bucket: nervous-efficient-rebel
     application: nervous-efficient-rebel-app
