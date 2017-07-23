@@ -1,4 +1,6 @@
-const execSync = require('child_process').execSync;
+require('dotenv-safe').load();
 
-console.log('Running ner-install');
-code = execSync('bash ner-install.sh');
+var childProcess = require('child_process');
+
+console.log('Running ner-install.sh');
+code = childProcess.execSync('bash ner-install.sh');
