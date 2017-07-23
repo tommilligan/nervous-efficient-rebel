@@ -5,7 +5,7 @@
 # Release to download
 versionName="stanford-ner-2017-06-09"
 zipFile="$versionName.zip"
-
+internalPort=$NER_INTERNAL_PORT
 
 # Get NER source
 # If we dont already hav a zipfile, download
@@ -46,7 +46,7 @@ serverScript="ner-server.sh"
 printf "Writing server script to $serverScript\n"
 cat << EOF > $serverScript
 #!/bin/sh
-$executable -mx1000m -cp "$versionName/stanford-ner.jar:$versionName/lib/*" edu.stanford.nlp.ie.NERServer  -loadClassifier $versionName/classifiers/english.muc.7class.distsim.crf.ser.gz -port 44552 -outputFormat inlineXML
+$executable -mx1000m -cp "$versionName/stanford-ner.jar:$versionName/lib/*" edu.stanford.nlp.ie.NERServer  -loadClassifier $versionName/classifiers/english.muc.7class.distsim.crf.ser.gz -port $internalPort -outputFormat inlineXML
 EOF
 
 # Make executable 
