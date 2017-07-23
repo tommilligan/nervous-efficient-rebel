@@ -1,10 +1,10 @@
 # nervous-efficient-rebel (NER) service
 
-The Named Entity Recognition (NER) service is a fat service
-providing NER. It aims to wrap a fat internal Java server
-in a thin external Node server, which provides additional:
+This is a fat service providing Named Entity Recognition (NER).
+It aims to wrap a fat internal Java server in a thin external Node server
+This provides additional feature such as:
 
-* authentication
+* authorizatino
 * JSON syntax
 
 
