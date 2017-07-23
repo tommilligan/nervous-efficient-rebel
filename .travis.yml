@@ -14,9 +14,10 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
   bucket: "nervous-efficient-rebel"
-  key: latest/MyApp.zip
-  application: nervous-efficient-rebel-app
-  deployment_group: nervous-efficient-rebel-depgrp
+  application: "nervous-efficient-rebel-app"
+  deployment_group: "nervous-efficient-rebel-depgrp"
+  skip_cleanup: true
+  region: eu-west-1
   on:
     branch: develop
 branches:
