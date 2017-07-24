@@ -9,11 +9,12 @@ permissions:
     pattern: "**"
     owner: ec2-user
     group: ec2-user
-
-  - object: /home/ec2-user/ner
-    pattern: "*.sh"
     mode: 774
 
+#
+#  - object: /home/ec2-user/ner
+#    pattern: "*.sh"
+#    mode: 774
 #
 #hooks:
 #  ApplicationStop:
