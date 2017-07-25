@@ -29,8 +29,15 @@ hooks:
 #      runas: ec2-user
 #
 
+  BeforeInstall:
+    - location: deploy-bin/remove-deploy-folder.sh
+      timeout: 20
+      runas: ec2-user
+
   AfterInstall:
     - location: deploy-bin/post-deploy-install.sh
+      timeout: 600
+      runas: ec2-user
 
 #  ApplicationStart:
 #    - location: systemctl start ner
