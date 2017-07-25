@@ -6,6 +6,7 @@
 versionName="stanford-ner-2017-06-09"
 zipFile="$versionName.zip"
 internalPort=$NER_INTERNAL_PORT
+stanfordNerRelative="../../"
 
 # Get NER source
 # If we dont already hav a zipfile, download
@@ -17,8 +18,8 @@ else
     wget "https://nlp.stanford.edu/software/$zipFile"
 fi
 # Always unzip from the archive
-rm -rf "$versionName"
-unzip "$zipFile"
+rm -rf "$stanfordNerRelative/$versionName"
+unzip "$stanfordNerRelative/$zipFile" -d "$stanfordNerRelative/$versionName"
 
 
 # Make sure we have Java 8
@@ -46,7 +47,7 @@ serverScript="ner-server.sh"
 printf "Writing server script to $serverScript\n"
 cat << EOF > $serverScript
 #!/bin/sh
-$executable -mx1000m -cp "$versionName/stanford-ner.jar:$versionName/lib/*" edu.stanford.nlp.ie.NERServer  -loadClassifier $versionName/classifiers/english.muc.7class.distsim.crf.ser.gz -port $internalPort -outputFormat inlineXML
+$executable -mx1000m -cp "$stanfordNerRelative/$versionName/stanford-ner.jar:$stanfordNerRelative/$versionName/lib/*" edu.stanford.nlp.ie.NERServer  -loadClassifier $stanfordNerRelative/$versionName/classifiers/english.muc.7class.distsim.crf.ser.gz -port $internalPort -outputFormat inlineXML
 EOF
 
 # Make executable 
