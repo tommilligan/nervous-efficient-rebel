@@ -1,7 +1,6 @@
 # Project specific build files
 ner-server.sh
-stanford-ner-*/
-stanford-ner-*.zip
+stanford-ner-*
 
 # Logs
 logs
