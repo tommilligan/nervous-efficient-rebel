@@ -5,22 +5,11 @@ files:
     destination: /home/ec2-user/ner/deploy
 
 permissions:
-  - object: /home/ec2-user/ner/deploy/stanford-ner/
+  - object: /home/ec2-user/ner/deploy/
     pattern: "**"
     owner: ec2-user
     group: ec2-user
-    mode: 1775
-  - object: /home/ec2-user/ner/deploy/deploy-bin/
-    pattern: "**"
-    owner: ec2-user
-    group: ec2-user
-    mode: 1774
-  - object: /home/ec2-user/ner/deploy
-    pattern: "*"
-    owner: ec2-user
-    group: ec2-user
-    mode: 774
-
+    mode: 777
 
 hooks:
 #  ApplicationStop:
