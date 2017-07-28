@@ -1,5 +1,32 @@
 {
+  "name": "nervous-efficient-rebel",
+  "version": "0.0.1",
+  "description": "Thin express wrapper fo the stanford-ner-service",
+  "author": "Tom Milligan <code@tommilligan.net>",
+  "private": false,
+  "main": "./src/app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha"
+  },
   "dependencies": {
-    "dotenv-safe": "^4.0.4"
+    "body-parser": "^1.17.2",
+    "chai-http": "^3.0.0",
+    "dotenv-safe": "^4.0.4",
+    "express": "^4.15.3",
+    "ner": "^0.2.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "chai-as-promised": "^7.1.1",
+    "eslint-plugin-mocha": "^4.11.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
+    "mocha-eslint": "^4.1.0",
+    "sinon": "^2.4.1",
+    "sinon-chai": "^2.12.0"
   }
 }

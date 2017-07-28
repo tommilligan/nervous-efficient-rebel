@@ -2,40 +2,23 @@ version: 0.0
 os: linux
 files:
   - source: ./
-    destination: /home/ec2-user/ner/deploy
+    destination: /home/ec2-user/ner/nervous-efficient-rebel
 
 permissions:
   - object: /home/ec2-user/ner/
-    pattern: "deploy"
+    pattern: "nervous-efficient-rebel"
     owner: ec2-user
     group: ec2-user
     mode: 775
 
-  - object: /home/ec2-user/ner/deploy/
+  - object: /home/ec2-user/ner/nervous-efficient-rebel/
     pattern: "**"
     owner: ec2-user
     group: ec2-user
     mode: 775
 
 hooks:
-#  ApplicationStop:
-#    - location: systemctl stop ner
-#      timeout: 20
-#      runas: ec2-user
-#
-
-  BeforeInstall:
-    - location: deploy-bin/remove-deploy-folder.sh
-      timeout: 20
-      runas: ec2-user
-
   AfterInstall:
-    - location: deploy-bin/post-deploy-install.sh
+    - location: deploy-hooks/after-install.sh
       timeout: 600
       runas: ec2-user
-
-#  ApplicationStart:
-#    - location: systemctl start ner
-#      timeout: 20
-#      runas: ec2-user
-#
