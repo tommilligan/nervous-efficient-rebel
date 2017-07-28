@@ -30,22 +30,28 @@ describe('root endpoint', function() {
             promisedResponse.then(res => expect(res.body).to.deep.equal(expected))
         ]);
     });
-    it('throws 400 if no payload', function(done) {
+    it('throws 400 if empty string payload', function() {
+        return expect(chai.request(app)
+                .post('/')
+                .send({payload: ''}))
+            .to.eventually.be.rejectedWith("Bad Request")
+    });
+    it('throws 400 if numeric payload', function() {
+        return expect(chai.request(app)
+                .post('/')
+                .send({payload: 42}))
+            .to.eventually.be.rejectedWith("Bad Request")
+    });
+    it('throws 400 if nested payload', function() {
+        return expect(chai.request(app)
+                .post('/')
+                .send({payload: {random: 'spam'}}))
+            .to.eventually.be.rejectedWith("Bad Request")
+    });
+    it('throws 400 if no payload', function() {
         return expect(chai.request(app)
                 .post('/')
                 .send({}))
-            .to.eventually.have.status(400);
-    });
-    it('throws 400 if payload not string', function(done) {
-        return expect(chai.request(app)
-                .post('/')
-                .send({payload: 42}))
-            .to.eventually.have.status(400);
-    });
-    it('throws 500 for errors in underlying NER service', function(done) {
-        return expect(chai.request(app)
-                .post('/')
-                .send({payload: 42}))
-            .to.eventually.have.status(400);
+            .to.eventually.be.rejectedWith("Bad Request")
     });
 });
