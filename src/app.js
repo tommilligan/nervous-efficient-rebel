@@ -31,12 +31,16 @@ var extractEntities = (inputText) => {
 };
 
 app.post('/', (req, res) => {
-    var inputText = req.body.payload
-    console.dir(req)
+    try {
+        var inputText = req.body.payload;
+    } catch (ex) {
+        console.log('Bad request')
+        res.status(400);
+    }
     extractEntities(inputText)
         .then(entities => {
             console.log('Extract entities resolved')
-            res.send(entities);
+            res.json(entities);
         })
         .catch(ex => {
             console.error(ex)
