@@ -3,12 +3,10 @@ node_js:
   - "node"
   - "7"
   - "6"
-  - "5"
-  - "4"
 install:
   - yarn install
 script:
-  - npm run unit-cover
+  - npm run unitcoverage-cover
 after_success:
   - ./deploy-hooks/zip-for-upload.sh
 deploy:
@@ -21,6 +19,7 @@ deploy:
     region: eu-west-1
     on: &2
       branch: develop
+      condition: $TRAVIS_NODE_VERSION = 7
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
