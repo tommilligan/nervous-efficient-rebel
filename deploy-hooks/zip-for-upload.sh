@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Zip files into archive
-zip -r nervous-efficient-rebel *
+git archive -o nervous-efficient-rebel.zip HEAD
 # Make deployment folder
 mkdir deploy
 # Move zip into deployment folder
