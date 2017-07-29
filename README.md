@@ -1,11 +1,16 @@
 # nervous-efficient-rebel (NER) service
 
-This is a fat service providing Named Entity Recognition (NER).
-It aims to wrap a fat internal Java server in a thin external Node server
-This provides additional feature such as:
+This is a thin service providing a modern server wrapper for the 
+Stanfords Named Entity Recognition (NER) Java service.
 
-* authorizatino
+It aims to wrap a plain Java HTTP service in a thin Node server
+for external exposure to the internet.
+
+It provides additional feature such as:
+
+* HTTP status codes
 * JSON syntax
+* HTTP-signature authentication
 
 
 ## Structure
@@ -26,15 +31,7 @@ The service is set up as follows:
 
 Top level run:
 ```bash
-node index.js
+node src/app.js
 ```
 
-Broadly, this runs:
-```bash
-./ner-install.sh # installs NER and makes ./ner-server.sh
-
-# Forks into
-./ner-server.sh  # runs Java server
-./app.js         # runs Node server
-```
-
+See `.env.example` for environment variables that should be set.
