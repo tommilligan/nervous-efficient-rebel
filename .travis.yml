@@ -1,14 +1,14 @@
 language: node_js
 node_js:
-#  - "node"
+  - "node"
   - "7"
-#  - "6"
-#  - "5"
-#  - "4"
+  - "6"
+  - "5"
+  - "4"
 install:
-  - true
+  - yarn install
 script:
-  - true
+  - npm run coverage
 after_success:
   - ./deploy-hooks/zip-for-upload.sh
 deploy:
