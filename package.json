@@ -12,7 +12,8 @@
     "test": "mocha",
     "unit": "mocha test/**/unit_*.js",
     "integrate": "mocha test/**/integrate_*.js",
-    "coverage": "istanbul cover node_modules/mocha/bin/_mocha"
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha",
+    "unit-cover": "istanbul cover node_modules/mocha/bin/_mocha test/**/unit_*.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",

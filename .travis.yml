@@ -8,7 +8,7 @@ node_js:
 install:
   - yarn install
 script:
-  - npm run coverage
+  - npm run unit-cover
 after_success:
   - ./deploy-hooks/zip-for-upload.sh
 deploy:
