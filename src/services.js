@@ -9,6 +9,7 @@ var connectionDefaults = {
 
 var extractEntities = (inputText, connection = connectionDefaults) => {
     return new Promise((resolve, reject) => {
+        console.log(connection);
         ner.get(connection, inputText, (ex, results) => {
             if (ex) {
                 ex.message = 'Could not reach NER service; ' + ex.message;

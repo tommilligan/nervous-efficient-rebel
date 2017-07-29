@@ -10,6 +10,8 @@
   },
   "scripts": {
     "test": "mocha",
+    "unit": "mocha test/**/unit_*.js",
+    "integrate": "mocha test/**/integrate_*.js",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha"
   },
   "dependencies": {
@@ -22,6 +24,7 @@
   "devDependencies": {
     "chai": "^4.1.0",
     "chai-as-promised": "^7.1.1",
+    "eslint": "^4.3.0",
     "eslint-plugin-mocha": "^4.11.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
