@@ -14,7 +14,7 @@ describe('integrate_services', function(){
             var text = 'John Smith went to Tesco and bought spam';
             var connection = {port: 80, host: invalidHostname};
             return expect(services.extractEntities(text, connection))
-                .to.eventually.be.rejectedWith('Could not reach NER service');
+                .to.eventually.be.rejectedWith(invalidHostname);
         });
         it('extractEntities will pass if the NER service is available', function(){
             this.timeout(5000);

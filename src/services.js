@@ -1,3 +1,5 @@
+var logger = require('winston');
+
 var ner = require('ner');
 
 // External services
@@ -9,13 +11,17 @@ var connectionDefaults = {
 
 var extractEntities = (inputText, connection = connectionDefaults) => {
     return new Promise((resolve, reject) => {
-        console.log(connection);
+        logger.debug('Connecting to Stanford NER service at %j', connection);
         ner.get(connection, inputText, (ex, results) => {
             if (ex) {
-                ex.message = 'Could not reach NER service; ' + ex.message;
+                logger.error('Error using Stanford NER service');
+                logger.error('Failed resolving %j', inputText);
                 reject(ex);
             } else {
-                resolve(results.entities);
+                var entities = results.entities;
+                logger.debug('Stanford NER service resolved entities successfully');
+                logger.info('Resolved "%s..." to %j', inputText.substr(0, 20), entities);
+                resolve(entities);
             }
         });
     });

@@ -20,6 +20,7 @@
     "chai-http": "^3.0.0",
     "dotenv-safe": "^4.0.4",
     "express": "^4.15.3",
+    "express-winston": "^2.4.0",
     "ner": "^0.2.2",
     "winston": "^2.3.1"
   },

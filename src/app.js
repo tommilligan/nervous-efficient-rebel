@@ -2,10 +2,30 @@ require('dotenv-safe').load();
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var expressWinston = require('express-winston');
+var winston = require('winston');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(generalErrorHandler);
 
+app.use(expressWinston.logger({
+    transports: [
+        new winston.transports.Console({
+            json: true,
+            colorize: true,
+            level: 'silly'
+        }),
+        new winston.transports.File({
+            name: 'express-log',
+            filename: 'ner-server-expwin.log',
+            json: true,
+            level: 'silly'
+        })
+    ]
+}));
+
+var logger = require('./logger'); 
 var services = require('./services');
 
 function generalErrorHandler (err, req, res, next) { // eslint-disable-line no-unused-vars
@@ -20,21 +40,19 @@ app.post('/', (req, res) => {
     if ((typeof inputText === 'string' || inputText instanceof String) && inputText !== '') {
         services.extractEntities(inputText)
             .then(entities => {
-                console.log('Extract entities resolved');
                 res.json(entities);
             })
             .catch(ex => {
-                console.error(ex);
-                console.log('Extract entities caught error');
+                logger.error(ex);
                 res.status(503).json({});
             });
     } else {
-        res.status(400).json({error: 'Payload is not string'});
+        res.status(400).json({error: 'Invalid payload - must be string of length > 0'});
     }
 });
 
 app.listen(listenPort, () => {
-  console.log(`nervous-efficient-rebel listening on port ${listenPort}`);
+    logger.info(`nervous-efficient-rebel listening on port ${listenPort}`);
 });
 
 module.exports = app;

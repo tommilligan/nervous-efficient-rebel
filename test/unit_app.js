@@ -23,11 +23,7 @@ describe('unit_app', function() {
             TIME: []
         };
         beforeEach(function () {
-            sinon.stub(services, 'extractEntities').returns(
-                new Promise((resolve) => {
-                    resolve(stubReturn);
-                })
-            );
+            sinon.stub(services, 'extractEntities').resolves(stubReturn);
         });
         afterEach(function () {
             services.extractEntities.restore();
@@ -69,11 +65,7 @@ describe('unit_app', function() {
     });
     describe('stub extractEntites unavailable', function() {
         beforeEach(function () {
-            sinon.stub(services, 'extractEntities').returns(
-                new Promise((resolve, reject) => {
-                    reject(new Error('Any error'));
-                })
-            );
+            sinon.stub(services, 'extractEntities').rejects('Generic error');
         });
         afterEach(function () {
             services.extractEntities.restore();

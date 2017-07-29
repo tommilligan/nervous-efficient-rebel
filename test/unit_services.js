@@ -42,7 +42,7 @@ describe('unit_services', function(){
             });
             it('extract entities rejects with the internal error', function(){
                 return expect(services.extractEntities('John Smith went to Tescos'))
-                    .to.eventually.be.rejectedWith('Could not reach NER service');
+                    .to.eventually.be.rejectedWith('Generic error');
             });
             afterEach(function() {
                 ner.get.restore();
