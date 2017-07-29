@@ -6,8 +6,9 @@ node_js:
 install:
   - yarn install
 script:
-  - npm run unitcoverage-cover
+  - npm run unit-cover
 after_success:
+  - bash <(curl -s https://codecov.io/bash)
   - ./deploy-hooks/zip-for-upload.sh
 deploy:
   - provider: s3
