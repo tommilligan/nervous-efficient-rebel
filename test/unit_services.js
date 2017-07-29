@@ -3,7 +3,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 var sinon = require('sinon');
-var sinonChai = require("sinon-chai");
+var sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 
 var ner = require('ner');
@@ -21,7 +21,7 @@ describe('unit_services', function(){
                 PERCENT: [],
                 PERSON: ['John Smith'],
                 TIME: []
-            }
+            };
             beforeEach(function(){
                 var stubReturn = {
                     entities: entities

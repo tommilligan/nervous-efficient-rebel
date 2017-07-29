@@ -1,14 +1,14 @@
 require('dotenv-safe').load();
-var express = require('express')
-var app = express()
+var express = require('express');
+var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(generalErrorHandler)
+app.use(generalErrorHandler);
 
 var services = require('./services');
 
-function generalErrorHandler (err, req, res, next) {
+function generalErrorHandler (err, req, res, next) { // eslint-disable-line no-unused-vars
     res.status(500).json({error: 'general'});
 }
 
@@ -20,21 +20,21 @@ app.post('/', (req, res) => {
     if ((typeof inputText === 'string' || inputText instanceof String) && inputText !== '') {
         services.extractEntities(inputText)
             .then(entities => {
-                console.log('Extract entities resolved')
+                console.log('Extract entities resolved');
                 res.json(entities);
             })
             .catch(ex => {
-                console.error(ex)
-                console.log('Extract entities caught error')
+                console.error(ex);
+                console.log('Extract entities caught error');
                 res.status(503).json({});
             });
     } else {
         res.status(400).json({error: 'Payload is not string'});
     }
-})
+});
 
 app.listen(listenPort, () => {
   console.log(`nervous-efficient-rebel listening on port ${listenPort}`);
-})
+});
 
 module.exports = app;

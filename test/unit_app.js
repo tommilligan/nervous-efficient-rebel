@@ -4,9 +4,8 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiHttp);
 chai.use(chaiAsPromised);
 var expect = chai.expect;
-var chaiAsPromised = require('chai-as-promised');
 var sinon = require('sinon');
-var sinonChai = require("sinon-chai");
+var sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 
 var app = require('../src/app');
@@ -34,10 +33,9 @@ describe('unit_app', function() {
             services.extractEntities.restore();
         });
         it('processes simple sentence', function() {
-            var inputBody = {payload: 'John Smith went to Tesocs'};
             var promisedResponse = expect(chai.request(app)
                 .post('/')
-                .send(inputBody))
+                .send({payload: 'John Smith went to Tesocs'}));
             return Promise.all([
                 // could do with a spy assertion here
                 promisedResponse.to.eventually.have.status(200),
@@ -46,27 +44,27 @@ describe('unit_app', function() {
         });
         it('throws 400 if empty string payload', function() {
             return expect(chai.request(app)
-                    .post('/')
-                    .send({payload: ''}))
-                .to.eventually.be.rejectedWith("Bad Request")
+                .post('/')
+                .send({payload: ''}))
+                .to.eventually.be.rejectedWith('Bad Request');
         });
         it('throws 400 if numeric payload', function() {
             return expect(chai.request(app)
-                    .post('/')
-                    .send({payload: 42}))
-                .to.eventually.be.rejectedWith("Bad Request")
+                .post('/')
+                .send({payload: 42}))
+                .to.eventually.be.rejectedWith('Bad Request');
         });
         it('throws 400 if nested payload', function() {
             return expect(chai.request(app)
-                    .post('/')
-                    .send({payload: {random: 'spam'}}))
-                .to.eventually.be.rejectedWith("Bad Request")
+                .post('/')
+                .send({payload: {random: 'spam'}}))
+                .to.eventually.be.rejectedWith('Bad Request');
         });
         it('throws 400 if no payload', function() {
             return expect(chai.request(app)
-                    .post('/')
-                    .send({}))
-                .to.eventually.be.rejectedWith("Bad Request")
+                .post('/')
+                .send({}))
+                .to.eventually.be.rejectedWith('Bad Request');
         });
     });
     describe('stub extractEntites unavailable', function() {
@@ -81,10 +79,9 @@ describe('unit_app', function() {
             services.extractEntities.restore();
         });
         it('returns 503 for internal service errors', function() {
-            var inputBody = {payload: 'John Smith went to Tesocs'};
             return expect(chai.request(app)
-                    .post('/')
-                    .send({payload: 'John Smith went to Tesocs'}))
+                .post('/')
+                .send({payload: 'John Smith went to Tesocs'}))
                 .to.eventually.be.rejectedWith('Service Unavailable');
         });
     });
