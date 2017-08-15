@@ -9,7 +9,6 @@ script:
   - npm run unit-cover
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-before_deploy:
   - git archive -o nervous-efficient-rebel.zip HEAD
   - mkdir deploy
   - mv nervous-efficient-rebel.zip deploy/
