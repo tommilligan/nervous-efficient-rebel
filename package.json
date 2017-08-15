@@ -1,6 +1,6 @@
 {
   "name": "nervous-efficient-rebel",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Thin express wrapper fo the stanford-ner-service",
   "author": "Tom Milligan <code@tommilligan.net>",
   "private": false,

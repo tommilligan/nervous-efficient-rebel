@@ -22,7 +22,8 @@ deploy:
     bucket: nervous-efficient-rebel
     region: eu-west-1
     on: &2
-      branch: develop
+      branch: master
+      tags: true
       condition: $TRAVIS_NODE_VERSION = 7
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY
@@ -36,9 +37,6 @@ deploy:
     wait-until-deployed: true
     on: *2
 
-branches:
-  except:
-    - /v\d+\.\d+\.\d+/
 notifications:
   email: false
 
