@@ -18,7 +18,18 @@ permissions:
     mode: 775
 
 hooks:
+  #ApplicationStop:
+  #  - location: deploy-hooks/application-stop.sh
+  #    timeout: 20
+
   AfterInstall:
     - location: deploy-hooks/after-install.sh
-      timeout: 600
-      runas: ec2-user
+      timeout: 900
+
+  ApplicationStart:
+    - location: deploy-hooks/application-start.sh
+      timeout: 20
+
+  ValidateService:
+    - location: deploy-hooks/validate-service.sh
+      timeout: 20

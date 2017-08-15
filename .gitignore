@@ -1,6 +1,8 @@
 # Project specific build files
 ner-server.sh
 stanford-ner-*
+nervous-efficient-rebeld
+nervous-efficient-rebel.sh
 
 # Logs
 logs
@@ -8,6 +10,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+nohup.out
 
 # Runtime data
 pids
